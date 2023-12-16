@@ -4,11 +4,11 @@ import StatusDisplay from './StatusDisplay'
  import PriorityDisplay from './PriorityDisplay'
  import ProgressDisplay from './ProgressDisplay'
  import DeleteBlock from './DeleteBolck'
-export default function TicketCard( { color , ticket}) {
+const TicketCard = ( { color , ticket}) => {
     return (
       <div className="ticket-card">
-          <Link to={"/ticket/${ticket.documentId}"} id='link'>
-          
+          <Link to={`/ticket/${ticket.documentId}`} id='link'>
+            <div className='ticket-color' style={{backgroundColor : color}}></div>
             <h3>{ticket.title}</h3>
             <AvatarDisplay ticket={ticket}/>
             <StatusDisplay status={ticket.status}/>
@@ -19,3 +19,4 @@ export default function TicketCard( { color , ticket}) {
       </div>
     )
   }
+  export default TicketCard
