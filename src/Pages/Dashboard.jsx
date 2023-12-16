@@ -1,10 +1,10 @@
 import TicketCard from '../Components/TicketCard'
-export default function Dashboard() {
-
+const Dashboard = () => {
+ 
   const tickets = [
     {
       category : 'Q1 2022' ,
-      color : 'red' ,
+      color : 'blue' ,
       title : 'Nfl Safe',
       owner : 'Mamadou',
       avatar :'../images/avatar.png',
@@ -40,37 +40,40 @@ export default function Dashboard() {
     }
   ]
 
-    const color = [
-      'rgb(255,179,186)',
-      'rgb(255,223,186)',
-      'rgb(255,255,186)',
-      'rgb(186,255,201)',
-      'rgb(186,255,255)'
-    ]
+  const colors = [
+    'rgb(255,179,186)',
+    'rgb(255,223,186)',
+    'rgb(255,255,186)',
+    'rgb(186,255,201)',
+    'rgb(186,225,255)',
+  ]
 
-    const uniqueCategories = [
-      ...new Set (tickets?.map(({category}) => category))
-    ]
-      console.log(uniqueCategories)
-    return (
-      <div className="dashboard">
-        <h1>Day Plan</h1>
-        <div className="ticket-container ">
-          {tickets && uniqueCategories?.map((uniqueCategories , categoryIndex)=>(
+  const uniqueCategories = [
+    ...new Set(tickets?.map(({ category }) => category)),
+  ]
+
+  return (
+    <div className="dashboard">
+      <h1>My Projects</h1>
+      <div className="ticket-container">
+        {tickets &&
+          uniqueCategories?.map((uniqueCategory, categoryIndex) => (
             <div key={categoryIndex}>
-              <h3>{uniqueCategories}</h3>
-              {tickets.filter(ticket => ticket.category === uniqueCategories)
-                .map((filteredTicket, _Index) => (
+              <h3>{uniqueCategory}</h3>
+              {tickets
+                .filter((ticket) => ticket.category === uniqueCategory)
+                .map((filteredTicket, _index) => (
                   <TicketCard
-                    id={_Index}
-                    color={color[categoryIndex] || color[0]}
+                    id={_index}
+                    color={colors[categoryIndex] || colors[0]}
                     ticket={filteredTicket}
                   />
-                ))
-              }
+                ))}
             </div>
           ))}
-        </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
+
+export default Dashboard
