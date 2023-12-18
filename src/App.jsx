@@ -12,8 +12,8 @@ function App() {
             <Nav />
             <Routes>
               <Route path='/' element={<Dashboard />}/>
-              <Route path='/TicketPage' element={<TicketPage />}/>
-              <Route path='/TicketPage/ :id' element={<TicketPage editMode = {true}/>}/> 
+              <Route path='/ticket' element={<TicketPage />}/>
+              <Route path='/ticket/:id' element={<TicketPage editMode = {true}/>}/> 
             </Routes>
           </BrowserRouter>
       </div>
