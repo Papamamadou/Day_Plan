@@ -79,6 +79,8 @@ const categories =['test 1', 'test 2']
               onChange={handleChange}
               value={formData.category}
             />
+            <label>Priority</label>
+            <div className='multiple-inout-container'>
 
             <label htmlFor="priority-1">1</label>
               <input
@@ -86,8 +88,8 @@ const categories =['test 1', 'test 2']
                 name="priority"
                 type="radio"
                 onChange={handleChange}
-                value={2}
-                checked={formData.priority == 2}
+                value={1}
+                checked={formData.priority === 1}
               />
               <label htmlFor="priority-2">2</label>
               <input
@@ -95,8 +97,8 @@ const categories =['test 1', 'test 2']
                 name="priority"
                 type="radio"
                 onChange={handleChange}
-                value={3}
-                checked={formData.priority == 3}
+                value={2}
+                checked={formData.priority === 2}
               />
               <label htmlFor="priority-3">3</label>
               <input
@@ -104,8 +106,8 @@ const categories =['test 1', 'test 2']
                 name="priority"
                 type="radio"
                 onChange={handleChange}
-                value={4}
-                checked={formData.priority == 4}
+                value={3}
+                checked={formData.priority === 3}
               />
               <label htmlFor="priority-4">4</label>
               <input
@@ -113,8 +115,8 @@ const categories =['test 1', 'test 2']
                 name="priority"
                 type="radio"
                 onChange={handleChange}
-                value={5}
-                checked={formData.priority == 5}
+                value={4}
+                checked={formData.priority === 4}
               />
               <label htmlFor="priority-5">5</label>
               <input
@@ -123,8 +125,13 @@ const categories =['test 1', 'test 2']
                 type="radio"
                 onChange={handleChange}
                 value={5}
-                checked={formData.priority == 5}
+                checked={formData.priority === 5}
               />
+              
+            </div>
+              { editMode && 
+              <>
+
               <input
                   type="range"
                   id="progress"
@@ -134,8 +141,47 @@ const categories =['test 1', 'test 2']
                   max="100"
                   onChange={handleChange}
                 />
-              <label htmlFor="progress">Progress</label>
+              <label htmlFor="progress">Progress</label> 
+
+              <label>Status</label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+              >
+              <option selected={formData.status === 'done' } value='done'>Done</option>
+              <option selected={formData.status === 'working on it' } value='working on it'>working on it</option>
+              <option selected={formData.status === 'stuck' } value='stuck'>Stuck</option>
+              <option selected={formData.status === 'not started' } value='not started'>Not start</option>
+              </select>
+              </>
+              }
+              <input type="submit" />
             
+          </section>
+          <section>
+            <label htmlFor="owner">Owner</label>
+            <input
+              id="owner"
+              name="owner"
+              type="owner"
+              onChange={handleChange}
+              required={true}
+              value={formData.owner}
+            />
+
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              id="avatar"
+              name="avatar"
+              type="url"
+              onChange={handleChange}
+            />
+            <div className="img-preview">
+              {formData.avatar && (
+                <img src={formData.avatar} alt="image preview" />
+              )}
+            </div>
           </section>
         </form>
       </div>
